@@ -16,7 +16,7 @@ const LoginForm: React.FC = () => {
     if (sessionToken) {
       Cookies.set('jwt_token', sessionToken);
       login(sessionToken);
-      UpdateToken();
+      UpdateToken("Login");
       navigate('/');
     }
   }, [sessionToken,login,navigate]);

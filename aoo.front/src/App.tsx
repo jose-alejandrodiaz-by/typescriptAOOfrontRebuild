@@ -1,8 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
-//import { BasicDataProvider } from './context/BasicDataContext';
-//import Navigation from './components/Navigation';
+import BasicDataProvider from './context/BasicContext';
+import Navigation from './global_components/NavBar';
 import Home from './pages/Home/Home';
 import Login from './pages/Login/Login';
 //import { CreateProject } from './pages/CreateProject';
@@ -18,11 +18,13 @@ const App: React.FC = () => {
   return (
     <Router>
       <AuthProvider>
+        <BasicDataProvider>
+          <Navigation/>
           <Routes>
             <Route path="/" element={<Home/>}/>
             <Route path="/login" element={<Login />} />
           </Routes>
-
+        </BasicDataProvider>
       </AuthProvider>
     </Router>
   );

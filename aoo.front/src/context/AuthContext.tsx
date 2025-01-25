@@ -38,7 +38,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
   const login = useCallback((token: string) => {
     setUser({ token });
-    UpdateToken();
+    UpdateToken("/");
   }, []);
 
   const logout = () => {
