@@ -5,13 +5,13 @@ import BasicDataProvider from './context/BasicContext';
 import Navigation from './global_components/NavBar';
 import Home from './pages/Home/Home';
 import Login from './pages/Login/Login';
-//import { CreateProject } from './pages/CreateProject';
+import  CreateProject  from './pages/CreateProject/CreateProject';
 //import { Projects } from './pages/Projects';
 //import { Tasks } from './pages/Tasks';
 //import { UpdatePassword } from './pages/UpdatePassword';
 //import UpdateTask from './pages/UpdateTasks';
-//import { ForgotPasswordEmailPage } from './pages/ForgotPasswordEmailPage';
-//import { ResetPasswordPage } from './pages/ResetPasswordPage';
+import {ForgotPassword} from './pages/ForgotPassword/ForgotPassword'
+import { ResetPassword } from './pages/ResetPassword/ResetPassword';
 import './App.css';
 //<BasicDataProvider> remove this, was covering above Navigation and all routes
 const App: React.FC = () => {
@@ -23,6 +23,9 @@ const App: React.FC = () => {
           <Routes>
             <Route path="/" element={<Home/>}/>
             <Route path="/login" element={<Login />} />
+            <Route path="forgot-password" element={<ForgotPassword/>}/>
+            <Route path="/reset-password" element={<ResetPassword/>}/>
+            <Route path="/create-project" element={<CreateProject/>}/>
           </Routes>
         </BasicDataProvider>
       </AuthProvider>

@@ -12,6 +12,7 @@ const items: NavItem[] = [
     { value: `/automation-hub//`, label: 'Automation Hub' },
     { value: '/projects/', label: 'Projects' },
     { value: '/tasks/', label: 'Tasks' },
+    { value: '/create-project/', label: 'Create Project' }
 ];
 
 const Navigation: React.FC = React.memo(() => {
@@ -23,7 +24,7 @@ const Navigation: React.FC = React.memo(() => {
             <ul className="nav-links">
 
                 <a href="/" className='homeLink'><HomeOutlined rev={undefined} /></a>
-                
+
                 <div className="dropdown">
 
                     <button className="dropbtn"><MenuOutlined rev={undefined} /></button>

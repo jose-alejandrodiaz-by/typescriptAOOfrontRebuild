@@ -1,5 +1,15 @@
 .App {
   text-align: center;
+  background-color: #282c34;
+}
+
+.App-center-container{
+  display: flex;
+  min-height: 80vh;
+  min-width: 100vh;
+  align-items: center;
+  justify-content: center;
+  
 }
 
 .App-logo {
@@ -81,7 +91,7 @@
 .dropdown-content {
   display: none;
   position: absolute;
-  background-color: #001529;
+  background-color: #282c34;
   min-width: 160px;
   z-index: 1;
   /* top: 7.5%; */
@@ -107,12 +117,15 @@
 
 .nav-links{
   margin-top: 5px;
+  
 }
 
 button.logout{
   float: right;
   font-size: 16px;  
-  padding-right: 5%;
+  color: #ddd;
+  border-style: none;
+  margin-right: 5%;
   background-color: transparent;
 }
 
