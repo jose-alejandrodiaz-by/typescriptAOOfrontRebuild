@@ -95,14 +95,14 @@ export default function CreateProject() {
                 });
             });
         } else {
-            const dataToPost = {
+            const dataToPost: Project = {
                 project_name: data.project_name,
                 project_code: data.project_code,
                 project_type_id: data.project_type_id,
                 platform_id: data.platform_id,
                 region_id: data.region_id,
                 modules: data.modules ? data.modules.map(id => ({ id })) : [],
-                environments: data.environments ? data.environments.map(id => ({ id })) : []
+                environments: data.environments ? data.environments.map(id => ({ id })) : [],
             };
             
             postProject(dataToPost).then(() => {

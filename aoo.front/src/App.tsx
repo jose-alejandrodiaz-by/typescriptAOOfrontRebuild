@@ -6,7 +6,7 @@ import Navigation from './global_components/NavBar';
 import Home from './pages/Home/Home';
 import Login from './pages/Login/Login';
 import  CreateProject  from './pages/CreateProject/CreateProject';
-//import { Projects } from './pages/Projects';
+import Projects from './pages/Projects/Projects';
 //import { Tasks } from './pages/Tasks';
 //import { UpdatePassword } from './pages/UpdatePassword';
 //import UpdateTask from './pages/UpdateTasks';
@@ -26,6 +26,7 @@ const App: React.FC = () => {
             <Route path="forgot-password" element={<ForgotPassword/>}/>
             <Route path="/reset-password" element={<ResetPassword/>}/>
             <Route path="/create-project" element={<CreateProject/>}/>
+            <Route path="/projects" element={<Projects/>}/>
           </Routes>
         </BasicDataProvider>
       </AuthProvider>

@@ -137,9 +137,24 @@ button.actionBtn{
   width: auto;
 }
 
+button{
+  height: 40px;
+}
+
 a.login{ 
   float: right;
   padding-top: 8px;
   padding-right: 5%;
 
+}
+
+.App-basic-header{
+  color: rgb(236, 236, 236);
+  padding-left: 5%;
+  display: flex;
+  align-items: center;
+  
+}
+.App-basic-header .item{
+  margin-right: 20px;
 }

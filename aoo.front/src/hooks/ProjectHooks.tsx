@@ -26,14 +26,13 @@ export function useGetAllProjects(page: number) {
                 if (res.headers['x-pagination']) {
                     const paginationHeaders = res.headers['x-pagination'].split(',')[0];
                     setTotalPages(Number(paginationHeaders.split(':')[1]));
-                    console.log(totalItems);
                 }
             })
             .catch((err) => {
                 setLoading(false);
                 setError({ isError: true, errorMessage: err.message });
             });
-    }, [page]);
+    }, [page, totalItems]);
 
     return { projects, loading, error, totalItems };
 }

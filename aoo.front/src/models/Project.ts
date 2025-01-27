@@ -6,4 +6,6 @@ export type Project = {
     region_id: number;
     modules: any[];
     environments: any[];
+    created_by_name?: string;
+    created_on?: string;
 };
