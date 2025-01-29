@@ -1,9 +1,10 @@
-import React, { Suspense, useContext, useState, useEffect } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { usePostProject } from "../../hooks/ProjectHooks";
 import { ToastContainer, toast } from 'react-toastify';
 import { useForm, Controller, SubmitHandler } from 'react-hook-form';
 import { BasicContext } from "../../context/BasicContext";
 import { Project } from '../../models/Project';
+import { BasicData } from '../../models/BasicData';
 import 'react-toastify/dist/ReactToastify.css';
 import './CreateProject.css';
 import { AuthProvider } from '../../context/AuthContext';
@@ -12,26 +13,6 @@ import ProtectedRoute from '../../global_components/ProtectedRoute';
 interface Region {
     id: number;
     name: string;
-}
-
-interface ProjectType {
-    id: number;
-    type_name: string;
-}
-
-interface PlatformType {
-    id: number;
-    platform_name: string;
-}
-
-interface Module {
-    id: number;
-    module_name: string;
-}
-
-interface Environment {
-    id: number;
-    environment_name: string;
 }
 
 const regions: Region[] = [
@@ -43,12 +24,13 @@ const regions: Region[] = [
 export default function CreateProject() {
     const basicContext = useContext(BasicContext);
     const getBasicData = basicContext?.getBasicData;
-    const [data, setData] = useState<{
-        projectTypes?: ProjectType[],
-        platforms?: PlatformType[],
-        modules?: Module[],
-        environments?: Environment[]
-    }>({});
+    const [data, setData] = useState<BasicData>({
+        platforms: [],
+        modules: [],
+        environments: [],
+        projectTypes: [],
+        issues: []
+    });
 
     useEffect(() => {
         if (getBasicData) {
@@ -59,7 +41,7 @@ export default function CreateProject() {
         }
     }, [getBasicData]);
 
-    const { register, handleSubmit, control, formState: { errors, isSubmitted }, reset, watch } = useForm<Project>({
+    const { register, handleSubmit, control, formState: { errors, isSubmitted }, reset } = useForm<Project>({
         defaultValues: {
             project_name: '',
             project_code: '',
@@ -71,14 +53,6 @@ export default function CreateProject() {
         }
     });
 
-    const projectData = watch(["modules", "environments"]);
-    const [totalEffort, setTotalEffort] = useState<number>(0);
-
-    const getTotalEffort = (event: React.MouseEvent<HTMLButtonElement>) => {
-        event.preventDefault();
-        console.log(projectData);
-        setTotalEffort(totalEffort + 1);
-    };
     const postProject = usePostProject();
     const onSubmit: SubmitHandler<Project> = (data) => {;
         if (Object.keys(errors).length !== 0 && isSubmitted) {
@@ -141,7 +115,7 @@ export default function CreateProject() {
                             ) : (
                                 <select {...register("project_type_id", { required: "Project type is required" })}>
                                     <option key={0} value="">Select a Project Type</option>
-                                    {data.projectTypes.map((projectType: ProjectType) => (
+                                    {data.projectTypes.map((projectType) => (
                                         <option key={projectType.id} value={projectType.id}>{projectType.type_name}</option>
                                     ))}
                                 </select>
@@ -152,7 +126,7 @@ export default function CreateProject() {
                         ) : (
                             <select {...register("platform_id", { required: "Platform is required" })}>
                                 <option key={0} value="">Select a Platform Type</option>
-                                {data.platforms.map((platformType: PlatformType) => (
+                                {data.platforms.map((platformType) => (
                                     <option key={platformType.id} value={platformType.id}>{platformType.platform_name}</option>
                                 ))}
                             </select>
@@ -172,7 +146,7 @@ export default function CreateProject() {
                                 {!data.modules ? (
                                     <input name="..." />
                                 ) : (
-                                    data.modules.map((option: Module) => (
+                                    data.modules.map((option) => (
                                         <div key={option.id}>
                                             <label key={option.id}>
                                                 <Controller name="modules" control={control}
@@ -207,7 +181,7 @@ export default function CreateProject() {
                                 {!data.environments ? (
                                     <input name="..." />
                                 ) : (
-                                    data.environments.map((option: Environment) => (
+                                    data.environments.map((option) => (
                                         <div key={option.id}>
                                             <label key={option.id}>
                                                 <Controller name="environments" control={control}
@@ -237,16 +211,6 @@ export default function CreateProject() {
                                     )))}
                             </div>
                         </div>
-                        </div>
-                        <div className="grid">
-                            <div className="col-span-1">
-                                <button onClick={getTotalEffort} type="button" className='actionBtn'>Show Total Effort</button>
-                            </div>
-                            <div className="col-span-1">
-                                <Suspense fallback={<>Loading...</>}>
-                                    {totalEffort === 0 || totalEffort === undefined ? null : totalEffort} to complete project.
-                                </Suspense>
-                            </div>
                         </div>
                         <button type="submit">Submit</button>
                     </div>

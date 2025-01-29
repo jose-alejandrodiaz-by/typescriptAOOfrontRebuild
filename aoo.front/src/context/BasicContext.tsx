@@ -1,14 +1,7 @@
 import React, { createContext, useState, useEffect, useContext, ReactNode } from 'react';
 import { getBasicEnvironments, getBasicIssues, getBasicModules, getBasicPlatforms, getBasicProjectTypes } from '../services/BasicSerivces';
 import { useAuth } from './AuthContext';
-
-interface BasicData {
-    platforms: any[];
-    modules: any[];
-    environments: any[];
-    projectTypes: any[];
-    issues: any[];
-}
+import { BasicData } from '../models/BasicData';
 
 interface BasicContextProps {
     getBasicData: () => BasicData | null;
