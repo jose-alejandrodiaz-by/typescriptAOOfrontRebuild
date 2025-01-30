@@ -148,6 +148,12 @@ a.login{
 
 }
 
+.Loading{
+  color: rgb(236, 236, 236);
+  font-size: 40px;
+  
+}
+
 .App-basic-header{
   color: rgb(236, 236, 236);
   padding-left: 5%;
@@ -157,4 +163,28 @@ a.login{
 }
 .App-basic-header .item{
   margin-right: 20px;
+}
+
+.pagination-buttons{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.pagination-buttons button{
+  background-color: transparent;
+  box-shadow: none;
+  border: none;
+}
+
+.pagination-buttons button:hover{
+  .icon{
+    color: #61dafb;
+    font-size: 17px;
+  }
+}
+
+.pagination-buttons .icon{
+  color: whitesmoke;
+  font-size: 15px;
 }

@@ -8,4 +8,7 @@ export type Project = {
     environments: any[];
     created_by_name?: string;
     created_on?: string;
+    platform_value?: string;
+    project_type_value?: string;
+
 };

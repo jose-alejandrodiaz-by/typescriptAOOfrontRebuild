@@ -1,8 +1,9 @@
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState, useCallback,useContext } from "react";
 import { getAllProjects, getProject, postProject } from "../services/ProjectServices";
 import { useAuth } from '../context/AuthContext';
 import { toast } from 'react-toastify';
 import { Project } from '../models/Project';
+import { BasicContext } from "../context/BasicContext";
 
 interface ErrorState {
     isError: boolean;
@@ -17,8 +18,9 @@ export function useGetAllProjects(page: number) {
         isError: false,
         errorMessage: ""
     });
-
+    const {user} = useAuth();
     useEffect(() => {
+        if(user?.token){
         getAllProjects(page)
             .then((res) => {
                 setAllProjects(res.data);
@@ -31,8 +33,8 @@ export function useGetAllProjects(page: number) {
             .catch((err) => {
                 setLoading(false);
                 setError({ isError: true, errorMessage: err.message });
-            });
-    }, [page, totalItems]);
+            });}
+    }, [page, totalItems,user]);
 
     return { projects, loading, error, totalItems };
 }
@@ -100,4 +102,34 @@ export function usePostProject() {
     }, [logout]);
 
     return createProject;
+}
+
+interface ProjectItem {
+    project: Project;
+    items: { label: string; value: string | number | undefined; }[];
+}
+
+export function useProjectItems(projects: Project[]) {
+    const basicContext = useContext(BasicContext);
+    const [projectItems, setProjectItems] = useState<ProjectItem[]>([]);
+
+    useEffect(() => {
+        const basicData = basicContext?.getBasicData();
+        if (basicData) {
+            setProjectItems(projects.map((project: Project) => {
+                const platform = basicData.platforms.find(p => p.id === project.platform_id);
+                const projectType = basicData.projectTypes.find(pt => pt.id === project.project_type_id);
+
+                const items = [
+                    { label: 'Project Name', value: project.project_name || undefined },
+                    { label: 'Type', value: projectType ? projectType.type_name : undefined },
+                    { label: 'Code', value: project.project_code || undefined },
+                    { label: 'Created by', value: project.created_by_name || undefined },
+                    { label: 'Created On', value: project.created_on ? new Date(project.created_on).toLocaleDateString() : undefined }                ];
+                return { project, items };
+            }));
+        }
+    }, [projects, basicContext]);
+
+    return projectItems;
 }

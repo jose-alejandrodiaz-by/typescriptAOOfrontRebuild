@@ -1,4 +1,4 @@
-import axios, { AxiosInstance, AxiosResponse } from 'axios';
+import { AxiosResponse } from 'axios';
 import { UpdateToken,getInstance } from './UpdateToken';
 
 interface ForgotPasswordEmailData {
