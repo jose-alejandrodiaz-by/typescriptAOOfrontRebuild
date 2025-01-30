@@ -117,7 +117,7 @@ export function useProjectItems(projects: Project[]) {
         const basicData = basicContext?.getBasicData();
         if (basicData) {
             setProjectItems(projects.map((project: Project) => {
-                const platform = basicData.platforms.find(p => p.id === project.platform_id);
+                //const platform = basicData.platforms.find(p => p.id === project.platform_id);
                 const projectType = basicData.projectTypes.find(pt => pt.id === project.project_type_id);
 
                 const items = [

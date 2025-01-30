@@ -6,6 +6,7 @@ import SummaryComponent from "../../global_components/SummaryComponent";
 import { SummaryHeaders } from "../../global_components/SummaryComponent";
 import { useGetAllProjects, useProjectItems } from "../../hooks/ProjectHooks";
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
+
 export default function Projects() {
     const [page, setPage] = useState(1);
     const { projects, loading, error, totalItems } = useGetAllProjects(page);
@@ -36,10 +37,10 @@ export default function Projects() {
                 <div className="App-center-container">
                     {loading ? (
                         <h1 className="Loading">Loading...</h1>
+                    ) : error.errorMessage ? (
+                        <h1 className="Error">Error: {error.errorMessage}</h1>
                     ) : (
-                        
                         <div>
-
                             <SummaryHeaders headers={headers} />
                             <div className="pagination-buttons">
                                 <button onClick={handlePreviousPage} disabled={page === 1}>
@@ -55,15 +56,14 @@ export default function Projects() {
                                     items={items} 
                                 />
                             ))}
-
-                        <div className="pagination-buttons">
-                            <button onClick={handlePreviousPage} disabled={page === 1}>
-                                <FaArrowLeft className="icon" /> 
-                            </button>
-                            <button onClick={handleNextPage} disabled={page * 10 >= totalItems}>
-                                <FaArrowRight className="icon" />
-                            </button>
-                        </div>
+                            <div className="pagination-buttons">
+                                <button onClick={handlePreviousPage} disabled={page === 1}>
+                                    <FaArrowLeft className="icon" /> 
+                                </button>
+                                <button onClick={handleNextPage} disabled={page * 10 >= totalItems}>
+                                    <FaArrowRight className="icon" />
+                                </button>
+                            </div>
                         </div>
                     )}
                 </div>
