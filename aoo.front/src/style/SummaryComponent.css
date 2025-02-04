@@ -7,8 +7,16 @@
     padding: 10px 20px;
     border-radius: 25px;
     background-color: #f0f0f0;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
     margin-top: 10px;
+}
+
+.summary-banner:hover {
+    box-shadow: 2px 3px 4px #61dafb;
+}
+
+.summary-banner:active {
+    transform: scale(0.99);
 }
 
 .summary-banner-headers {

@@ -1,0 +1,38 @@
+
+/*FLOATING CONTAINER*/
+.floating-container {
+    position: fixed;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #1f2228fc;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    height: 50%;
+    max-height: 400px;
+    width: 80%;
+    max-width: 900px;
+    padding: 20px;
+    align-items: center;
+}
+
+.floating-content {
+    position:relative;
+}
+
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    color: #d3d3d3;
+}
+h4 {
+    color: #d3d3d3;
+    margin-bottom: 4px;
+    margin-top: 6px;
+}

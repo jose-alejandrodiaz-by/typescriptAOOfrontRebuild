@@ -184,6 +184,14 @@ a.login{
   }
 }
 
+.pagination-buttons button:active{
+
+  .icon{
+    font-size: 15px;
+  }
+
+}
+
 .pagination-buttons .icon{
   color: whitesmoke;
   font-size: 15px;
