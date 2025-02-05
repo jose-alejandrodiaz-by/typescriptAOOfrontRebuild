@@ -1,4 +1,3 @@
-
 /*FLOATING CONTAINER*/
 .floating-container {
     position: fixed;
@@ -31,8 +30,14 @@
     cursor: pointer;
     color: #d3d3d3;
 }
+
 h4 {
     color: #d3d3d3;
     margin-bottom: 4px;
     margin-top: 6px;
+}
+
+.floating-container input {
+    width: 60%;
+    box-sizing: border-box;
 }

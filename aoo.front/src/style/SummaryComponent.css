@@ -37,6 +37,15 @@
     padding: 10px; /* Set the padding between items */
     box-sizing: border-box; /* Include padding in the width */
     text-align: center; /* Center the text inside the box */
+    
+}
+
+
+.summary-banner .item {
+    width: 600px; /* Set the specific width for each item */
+    padding: 10px; /* Set the padding between items */
+    box-sizing: border-box; /* Include padding in the width */
+    text-align: center; /* Center the text inside the box */
 }
 
 .summary-banner .item {
@@ -44,6 +53,9 @@
     padding: 10px; /* Set the padding between items */
     box-sizing: border-box; /* Include padding in the width */
     text-align: center; /* Center the text inside the box */
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis; 
 }
 
 .summary-banner h1,

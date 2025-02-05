@@ -90,6 +90,7 @@ export default function CreateProject() {
             <ProtectedRoute>
         <div className='App-center-container'>
             <div className="form">
+                <h1>Create A New Project</h1>
                 <form onSubmit={handleSubmit(onSubmit)} >
                     <div className="inner_form">
                         <div className='grid'>
@@ -114,7 +115,7 @@ export default function CreateProject() {
                                 <input name="..." />
                             ) : (
                                 <select {...register("project_type_id", { required: "Project type is required" })}>
-                                    <option key={0} value="">Select a Project Type</option>
+                                    <option key={0} value="0">Select a Project Type</option>
                                     {data.projectTypes.map((projectType) => (
                                         <option key={projectType.id} value={projectType.id}>{projectType.type_name}</option>
                                     ))}
@@ -125,7 +126,7 @@ export default function CreateProject() {
                             <input name="..." />
                         ) : (
                             <select {...register("platform_id", { required: "Platform is required" })}>
-                                <option key={0} value="">Select a Platform Type</option>
+                                <option key={0} value="0">Select a Platform Type</option>
                                 {data.platforms.map((platformType) => (
                                     <option key={platformType.id} value={platformType.id}>{platformType.platform_name}</option>
                                 ))}
@@ -133,7 +134,7 @@ export default function CreateProject() {
                         )}
                         <div>
                             <select {...register("region_id", { required: "Region is required" })}>
-                                <option key={0} value="">Select a Region</option>
+                                <option key={0} value="0">Select a Region</option>
                                 {regions.map(region => (
                                     <option key={region.id} value={region.id}>{region.name}</option>
                                 ))}

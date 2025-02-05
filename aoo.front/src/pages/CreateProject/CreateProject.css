@@ -6,7 +6,7 @@ div.form {
     h1 {
         width: auto;
         color: #d3d3d3;
-        text-align: center;
+        
         font-family: Inter;
         font-size: 20px;
         font-style: normal;
@@ -14,6 +14,8 @@ div.form {
         line-height: normal;
         top: 20px;
         position: relative;
+        padding-left: 4%;
+        padding-bottom: 15px;
     }
     h2 {
         color: #d3d3d3;
