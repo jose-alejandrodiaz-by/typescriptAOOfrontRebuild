@@ -1,13 +1,13 @@
 .summary-banner {
     display: flex;
     width: 900px;
-    height: 30px;
+    height: 16px;
     align-items: center;
     justify-content: space-around;
     padding: 10px 20px;
-    border-radius: 25px;
+    border-radius: 14px;
     background-color: #f0f0f0;
-
+    font-size: 14px;
     margin-top: 10px;
 }
 

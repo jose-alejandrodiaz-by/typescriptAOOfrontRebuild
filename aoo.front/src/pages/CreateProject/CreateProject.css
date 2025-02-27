@@ -3,41 +3,7 @@ div.form {
     margin: 0 0 0 0;
     background: transparent;
 
-    h1 {
-        width: auto;
-        color: #d3d3d3;
-        
-        font-family: Inter;
-        font-size: 20px;
-        font-style: normal;
-        font-weight: 500;
-        line-height: normal;
-        top: 20px;
-        position: relative;
-        padding-left: 4%;
-        padding-bottom: 15px;
-    }
-    h2 {
-        color: #d3d3d3;
-        font-family: Inter;
-        font-size: 16px;
-        font-style: normal;
-        font-weight: 400;
-        line-height: normal;
-        text-align: center;
-        position: relative;
-        top: 20px;
-    }
-    h3 {
-        color: #d3d3d3;
-        font-family: Inter;
-        font-size: 16px;
-        font-weight: bold;
-        line-height: normal;
-        padding-left: 30px;
-        margin-top: 0;
-        position: relative;
-    }
+    
     form {
         input[type="text"] {
             margin-bottom: 5px;

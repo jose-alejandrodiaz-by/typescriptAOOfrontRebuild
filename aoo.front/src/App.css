@@ -3,6 +3,46 @@
   background-color: #282c34;
 }
 
+h1 {
+  width: auto;
+  color: #d3d3d3;
+  
+  font-family: Inter;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  
+  position: relative;
+  padding-left: 4%;
+  
+}
+h2 {
+  color: #d3d3d3;
+  font-family: Inter;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-align: center;
+  position: relative;
+  top: 20px;
+}
+h3 {
+  color: #d3d3d3;
+  font-family: Inter;
+  font-size: 18px;
+  font-weight: bold;
+  line-height: normal;
+  padding-left: 30px;
+  margin-top: 0;
+  position: relative;
+}
+h4 {
+  color: #d3d3d3;
+  font-family: Inter;
+  font-size: 16px;
+}
 .App-center-container{
   display: flex;
   min-height: 80vh;
@@ -139,6 +179,7 @@ button.actionBtn{
 
 button{
   height: 40px;
+  border-radius: 12px;
 }
 
 a.login{ 

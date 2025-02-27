@@ -45,7 +45,7 @@ export default function Projects() {
         <AuthProvider>
             <ProtectedRoute>
                 <div className="App-basic-header">
-                    <h1 className='item'>PROJECTS</h1>
+                    <h1 className='item'>Projects</h1>
                     <button className='item' onClick={() => navigate('/create-project')}>Create Project</button>
                 </div>
 
@@ -57,14 +57,6 @@ export default function Projects() {
                     ) : (
                         <div>
                             <SummaryHeaders headers={headers} />
-                            <div className="pagination-buttons">
-                                <button onClick={handlePreviousPage} disabled={page === 1}>
-                                    <FaArrowLeft className="icon" /> 
-                                </button>
-                                <button onClick={handleNextPage} disabled={page * 10 >= totalItems}>
-                                     <FaArrowRight className="icon" />
-                                </button>
-                            </div>
                             {projectItems.map(({ project, items }) => (
                                 <div key={project.project_code} onClick={() => handleProjectClick(project)}>
                                     <SummaryComponent 
