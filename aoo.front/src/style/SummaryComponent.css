@@ -1,6 +1,6 @@
 .summary-banner {
     display: flex;
-    width: 900px;
+    width: 800px;
     height: 16px;
     align-items: center;
     justify-content: space-around;
@@ -9,6 +9,7 @@
     background-color: #f0f0f0;
     font-size: 14px;
     margin-top: 10px;
+    justify-self: center;
 }
 
 .summary-banner:hover {
@@ -21,7 +22,7 @@
 
 .summary-banner-headers {
     display: flex;
-    width: 900px;
+    width: 800px;
     height: 15px;
     align-items: center;
     justify-content: space-around;
@@ -33,8 +34,8 @@
 }
 
 .summary-banner-headers .item {
-    width: 600px; /* Set the specific width for each item */
-    padding: 10px; /* Set the padding between items */
+    width: 400px; /* Set the specific width for each item */
+    padding: 10px,20px; /* Set the padding between items */
     box-sizing: border-box; /* Include padding in the width */
     text-align: center; /* Center the text inside the box */
     
@@ -42,15 +43,7 @@
 
 
 .summary-banner .item {
-    width: 600px; /* Set the specific width for each item */
-    padding: 10px; /* Set the padding between items */
-    box-sizing: border-box; /* Include padding in the width */
-    text-align: center; /* Center the text inside the box */
-}
-
-.summary-banner .item {
-    width: 600px; /* Set the specific width for each item */
-    padding: 10px; /* Set the padding between items */
+    width: 200px; /* Set the specific width for each item */
     box-sizing: border-box; /* Include padding in the width */
     text-align: center; /* Center the text inside the box */
     white-space: nowrap; 

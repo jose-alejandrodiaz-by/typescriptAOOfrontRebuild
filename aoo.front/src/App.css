@@ -180,6 +180,7 @@ button.actionBtn{
 button{
   height: 40px;
   border-radius: 12px;
+  border-width: 0cap;
 }
 
 a.login{ 
