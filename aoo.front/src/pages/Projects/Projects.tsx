@@ -40,7 +40,7 @@ export default function Projects() {
     const handleClose = () => {
         setSelectedProject(null);
     };
-
+    console.log(projects);
     return (
         <AuthProvider>
             <ProtectedRoute>

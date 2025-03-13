@@ -1,4 +1,5 @@
 export type Project = {
+    id?: number;
     project_name: string;
     project_code: string;
     project_type_id: number;
