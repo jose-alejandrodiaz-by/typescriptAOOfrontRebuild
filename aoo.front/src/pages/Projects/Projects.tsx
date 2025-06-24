@@ -9,10 +9,13 @@ import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 import FloatingProjectDetails from './components/FloatingProjectDetails';
 import { BasicContext } from "../../context/BasicContext";
 import { Project } from "../../models/Project";
+import FloatingCloseProjectUpdateParentJira from './components/FloatingCloseProjectUpdateParentJira';
 
 export default function Projects() {
     const [page, setPage] = useState(1);
     const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+    const [showCloseProject, setShowCloseProject] = useState(false);
+    const [filter, setFilter] = useState(""); // <-- Add this line
     const { projects, loading, error, totalItems } = useGetAllProjects(page);
     const navigate = useNavigate();
     const projectItems = useProjectItems(projects);
@@ -33,14 +36,27 @@ export default function Projects() {
         }
     };
 
-    const handleProjectClick = (project:Project) => {
+    const handleProjectClick = (project: Project) => {
         setSelectedProject(project);
     };
 
     const handleClose = () => {
         setSelectedProject(null);
+        setShowCloseProject(false);
     };
-    console.log(projects);
+
+    const handleShowCloseProject = () => {
+        setShowCloseProject(true);
+    };
+
+    // Smart filter logic
+    const filteredProjectItems = projectItems.filter(({ project }) => {
+        if (!filter.trim()) return true;
+        // Remove spaces and compare lowercased, partial match
+        const normalize = (str: string) => str.replace(/\s+/g, '').toLowerCase();
+        return normalize(project.project_name).includes(normalize(filter));
+    });
+
     return (
         <AuthProvider>
             <ProtectedRoute>
@@ -56,8 +72,18 @@ export default function Projects() {
                         <h1 className="Error">Error: {error.errorMessage}</h1>
                     ) : (
                         <div>
+                    {/* Filter input */}
+                    <div className="util-objects-center-container">
+                        <input
+                            type="text"
+                            placeholder="Filter by project name..."
+                            value={filter}
+                            onChange={e => setFilter(e.target.value)}
+                            style={{ padding: 8, width: 300 }}
+                        />
+                    </div>
                             <SummaryHeaders headers={headers} />
-                            {projectItems.map(({ project, items }) => (
+                            {filteredProjectItems.map(({ project, items }) => (
                                 <div key={project.project_code} onClick={() => handleProjectClick(project)}>
                                     <SummaryComponent 
                                         items={items} 
@@ -76,9 +102,18 @@ export default function Projects() {
                     )}
                 </div>
                 {selectedProject && (
-                    <FloatingProjectDetails 
+                    <div>
+                        <FloatingProjectDetails 
+                            project={selectedProject} 
+                            basicData={basicData} 
+                            onClose={handleClose} 
+                            onShowCloseProject={handleShowCloseProject}
+                        />
+                    </div>
+                )}
+                {showCloseProject && selectedProject && (
+                    <FloatingCloseProjectUpdateParentJira 
                         project={selectedProject} 
-                        basicData={basicData} 
                         onClose={handleClose} 
                     />
                 )}

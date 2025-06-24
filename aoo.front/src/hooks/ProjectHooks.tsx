@@ -1,9 +1,11 @@
 import { useEffect, useState, useCallback,useContext } from "react";
-import { getAllProjects, getProject, postProject } from "../services/ProjectServices";
+import { getAllProjects, getProject, postProject,patchProject } from "../services/ProjectServices";
 import { useAuth } from '../context/AuthContext';
 import { toast } from 'react-toastify';
 import { Project } from '../models/Project';
 import { BasicContext } from "../context/BasicContext";
+import {postProjectDetails} from "../services/ProjectDetailServices";
+import { ProjectDetails } from "../models/ProjectDetails";
 
 interface ErrorState {
     isError: boolean;
@@ -102,6 +104,90 @@ export function usePostProject() {
     }, [logout]);
 
     return createProject;
+}
+
+export function usePostProjectDetails() {
+    const { logout } = useAuth();
+    const createProjectDetails = useCallback(async (data: ProjectDetails) => {
+        postProjectDetails(data)
+            .then((res) => {
+                if (res === undefined) {
+                    throw new Error("Something went wrong");
+                }
+                toast.success("Project details created", {
+                    position: 'top-right',
+                    autoClose: 3000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                });
+            })
+            .catch((error) => {
+                console.error(error);
+                let errorMessage = "Something went wrong";
+                if (error.message) {
+                    errorMessage = error.message;
+                }
+                toast.error(`${errorMessage}`, {
+                    position: 'top-right',
+                    autoClose: 3000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                });
+                if (error.message && error.message.includes("401")) {
+                    logout();
+                }
+            });
+    }, [logout]);
+
+    return createProjectDetails;
+}
+
+export function useCompleteProject() {
+    const { logout } = useAuth();
+    const completeProject = useCallback(async (id: Number) => {
+        patchProject(id.toString())
+            .then((res) => {
+                if (res === undefined) {
+                    throw new Error("Something went wrong");
+                }
+                toast.success("Project closed", {
+                    position: 'top-right',
+                    autoClose: 3000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                });
+            })
+            .catch((error) => {
+                console.error(error);
+                let errorMessage = "Something went wrong";
+                if (error.message) {
+                    errorMessage = error.message;
+                }
+                toast.error(`${errorMessage}`, {
+                    position: 'top-right',
+                    autoClose: 3000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                });
+                if (error.message && error.message.includes("401")) {
+                    logout();
+                }
+            });
+    }, [logout]);
+
+    return completeProject;
 }
 
 interface ProjectItem {

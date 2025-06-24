@@ -7,9 +7,10 @@ interface FloatingProjectDetailsProps {
     project: Project;
     basicData: BasicData | null;
     onClose: () => void;
+    onShowCloseProject: () => void; // Add this prop
 }
 
-const FloatingProjectDetails: React.FC<FloatingProjectDetailsProps> = ({ project, basicData, onClose }) => {
+const FloatingProjectDetails: React.FC<FloatingProjectDetailsProps> = ({ project, basicData, onClose, onShowCloseProject }) => {
     const getPlatformName = (id: number) => {
         if (!basicData) return 'N/A';
         const platform = basicData.platforms.find(p => p.id === id);
@@ -80,6 +81,7 @@ const FloatingProjectDetails: React.FC<FloatingProjectDetailsProps> = ({ project
                                 </div>
                             </div>
                         </div>
+                        <button onClick={onShowCloseProject}>Close Project</button> {/* Add this button */}
                     </div>
                 </div>
             </div>

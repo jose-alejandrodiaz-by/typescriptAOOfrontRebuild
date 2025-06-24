@@ -9,9 +9,9 @@ interface NavItem {
 }
 
 const items: NavItem[] = [
-    { value: `/automation-hub//`, label: 'Automation Hub' },
+    /*{ value: `/automation-hub//`, label: 'Automation Hub' },*/
     { value: '/projects/', label: 'Projects' },
-    { value: '/tasks/', label: 'Tasks' },
+    /*{ value: '/tasks/', label: 'Tasks' },*/
     { value: '/create-project/', label: 'Create Project' }
 ];
 

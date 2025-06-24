@@ -17,8 +17,8 @@ const postProject = async (data: ProjectData): Promise<any> => {
     });
 };
 
-const patchProject = async (data: ProjectData, id: string): Promise<any> => {
-    return await instance!.patch(`${id}`, data, {
+const patchProject = async (id: string): Promise<any> => {
+    return await instance!.patch(`${id}`, {
         headers: {
             'Content-Type': 'application/json',
             'Access-Control-Expose-Headers': '*'
@@ -38,6 +38,8 @@ const getAllProjects = async (page: number): Promise<any> => {
         }
     });
 };
+
+
 
 export {
     getProject, getAllProjects, postProject, UpdateToken, patchProject
